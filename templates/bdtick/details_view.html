@@ -1,0 +1,12 @@
+{% extends 'bboard/layout.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block main %}
+
+<div class="features">
+    <h1> {{ course.title }} </h1>
+    <p> {{ course.full_text }} </p>
+</div>
+
+{% endblock %}

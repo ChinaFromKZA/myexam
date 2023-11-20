@@ -1,0 +1,30 @@
+{% extends 'bboard/layout.html' %}
+
+{% block title %}Список курсов{% endblock %}
+
+{% block main %}
+    <div class="courses-container">
+        <h2>Товары, которые можно приобрести</h2>
+        <p>На этом сайте есть всё!</p>
+        <div class="courses">
+            {% for course in courses %}
+                <div class="course-item">
+                    <h3>{{ course.title }}</h3>
+                    <p><strong>Страна производитель:</strong> {{ course.instructor }}</p>
+                    <p><strong>Цена:</strong> ${{ course.price_per_month }}</p>
+                    <div class="course-buttons">
+                        <form action="{% url 'buy_course' course.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Купить">
+                        </form>
+                        <form action="{% url 'edit_course' course.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Изменить">
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends 'bboard/layout.html' %}
+
+{% block title %}Контакты - Heek Brains{% endblock %}
+
+{% block main %}
+
+
+<section class="contacts-section">
+    <h2>Контакты с владельцем</h2>
+    <p>Запишите свои пожелания, предложения или жалобы прямо сюда:</p>
+    <div class="contact-info">
+        <p><strong>Имя:</strong> Владелец компании</p>
+        <p><strong>Email:</strong> whowho@gmail.com</p>
+        <p><strong>Телефон:</strong> +123123</p>
+    </div>
+    <form action="/submit_contact/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+
+{% endblock %}

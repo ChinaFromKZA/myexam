@@ -1,0 +1,21 @@
+{% extends 'bboard/layout.html' %}
+
+{% block title %} Наши курсы {% endblock %}
+
+{% block main %}
+
+    <div class="features">
+        <h1>Форма по добавлению прайса</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.title }}<br>
+            {{ form.names }}<br>
+            {{ form.full_text }}
+            <span>{{ error }}</span>
+            <button class="btn btn-success" type="submit">Добавить прайс</button>
+        </form>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'bboard/layout.html' %}
+
+{% block title %}Цены на курсы{% endblock %}
+
+{% block main %}
+
+<div class="features">
+    <h1>Курсы из программы</h1>
+    <a href="{% url 'create' %}">
+        <button href="{% url 'create' %}" class="btn btn-info">Добавить</button>
+
+    </a>
+    <div class="products-container">
+        {% if prices %}
+            {% for product in prices %}
+                <div class="product-card">
+                    <h3>{{ product.title }}</h3>
+                    <p>{{ product.name }}</p>
+                    <p>{{ product.full_text }}</p>
+                    <a href="{% url 'price_details' product.id %}" class="btn btn-warning">Подробнее</a>
+                 <form method="post" action="{% url 'delete_price' product.id %}" class="delete-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>У вас нет записей</p>
+        {% endif %}
+    </div>
+</div>
+
+
+
+{% endblock %}
